@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Uploads (temporary files)
+backend/uploads/
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
