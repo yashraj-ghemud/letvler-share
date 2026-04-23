@@ -9,7 +9,7 @@ function App() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
+  const BACKEND_URL = 'https://letvler-share.onrender.com'
 
   const handleDragOver = (e) => {
     e.preventDefault()
