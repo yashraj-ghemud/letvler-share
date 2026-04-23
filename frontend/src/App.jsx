@@ -9,6 +9,8 @@ function App() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
+
   const handleDragOver = (e) => {
     e.preventDefault()
     setIsDragging(true)
@@ -41,7 +43,7 @@ function App() {
     setLoading(true)
     const formData = new FormData()
     formData.append('file', file)
-
+      `${BACKEND_URL}`
     try {
       const response = await axios.post('http://localhost:3000/upload', formData, {
         headers: {
@@ -61,7 +63,7 @@ function App() {
 
   const handleDownload = () => {
     if (code.length === 2) {
-      window.location.href = `http://localhost:3000/${code}`
+      window.location.href = `${BACKEND_URL}/${code}`
     } else {
       setError('Please enter a valid 2-digit code')
     }
@@ -96,8 +98,8 @@ function App() {
         {/* Upload Zone */}
         <div
           className={`border-2 border-dashed p-12 text-center transition-all ${isDragging
-              ? 'border-hacker-green bg-hacker-dim'
-              : 'border-hacker-dim hover:border-hacker-green'
+            ? 'border-hacker-green bg-hacker-dim'
+            : 'border-hacker-dim hover:border-hacker-green'
             }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}

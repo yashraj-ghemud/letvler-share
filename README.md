@@ -81,9 +81,39 @@ Frontend runs on `http://localhost:5173`
 
 Files are automatically deleted from disk and memory after exactly 2 minutes (120,000ms) using `setTimeout` and `fs.unlink`.
 
-## Production Deployment
+## Production Deployment (Render)
 
-For production, the backend catch-all route `/:code` handles direct URL access. Configure your domain (e.g., letvler.com) to point to the backend server.
+### Backend Deployment
+
+1. Push your code to GitHub
+2. Go to [Render Dashboard](https://dashboard.render.com/)
+3. Click "New +" → "Web Service"
+4. Connect your GitHub repository
+5. Set root directory to `backend`
+6. Build Command: `npm install`
+7. Start Command: `node server.js`
+8. Click "Deploy Web Service"
+
+### Frontend Deployment
+
+1. Go to [Render Dashboard](https://dashboard.render.com/)
+2. Click "New +" → "Static Site"
+3. Connect your GitHub repository
+4. Set root directory to `frontend`
+5. Build Command: `npm install && npm run build`
+6. Publish Directory: `dist`
+7. Add Environment Variable:
+   - Key: `VITE_BACKEND_URL`
+   - Value: `https://letvler-share.onrender.com` (your backend URL)
+8. Click "Deploy Static Site"
+
+**Alternative:** Use the `render.yaml` file in the `frontend/` folder for automatic deployment configuration.
+
+### Production URL Structure
+
+- Frontend: `https://your-frontend-url.onrender.com`
+- Backend: `https://letvler-share.onrender.com`
+- Direct download: `https://letvler-share.onrender.com/99` (2-digit code)
 
 ## Notes
 

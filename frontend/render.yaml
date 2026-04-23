@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: letvler-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://letvler-share.onrender.com
