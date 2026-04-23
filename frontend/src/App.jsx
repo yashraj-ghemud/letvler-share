@@ -43,9 +43,9 @@ function App() {
     setLoading(true)
     const formData = new FormData()
     formData.append('file', file)
-      `${BACKEND_URL}`
+
     try {
-      const response = await axios.post('http://localhost:3000/upload', formData, {
+      const response = await axios.post(`${BACKEND_URL}/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
